@@ -7,10 +7,14 @@ import javax.persistence.Id
 
 @Entity
 data  class Post (
+
         @Id @GeneratedValue val id: Long? = null,
-        val author: String? = null,
+        val authorId: Long? = null,
         val title: String? = null,
-        val category: String? = null
+        val category: String? = null,
+        @Transient
+        val author: Author? = null
+
 ) {
-    constructor(author: String, title: String, category: String) : this(null, author, title, category)
+    constructor(authorId: Long, title: String, category: String) : this(null, authorId, title, category)
 }

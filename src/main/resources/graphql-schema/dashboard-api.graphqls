@@ -4,7 +4,7 @@ schema {
 }
 
 type Mutation {
-    writePost(author: String, title: String, category: String): Post!
+    writePost(authorId: Int, title: String, category: String): Post!
     addAuthor(name: String, age: Int, country: String): Author!
 }
 
@@ -17,7 +17,7 @@ type Query {
 type Post {
     id: ID!
     title: String!
-    author: String!
+    author: Author!
 }
 
 type Author {

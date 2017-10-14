@@ -8,15 +8,15 @@ import org.springframework.web.bind.annotation.*
 import java.util.*
 
 @RestController
-class PostResolver(val postRepository: PostRepository) : GraphQLQueryResolver, GraphQLMutationResolver {
+class PostAPIResolver(val postRepository: PostRepository) : GraphQLQueryResolver, GraphQLMutationResolver {
     @GetMapping("/posts")
     fun posts(): List<Post> = postRepository!!.findAll()
 
     @GetMapping("/post/{id}")
     fun postById(@PathVariable id: Long): Post? = postRepository.getOne(id)
 
-    fun writePost(author: String, title: String, category: String): Post {
-        var  myPost = Post(author, title, category)
+    fun writePost(authorId: Long, title: String, category: String): Post {
+        var  myPost = Post(authorId, title, category)
         return postRepository!!.save(myPost)
     }
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class AuthorResolver(val authorRepository: AuthorRepository) : GraphQLQueryResolver, GraphQLMutationResolver{
+class AuthorAPIResolver(val authorRepository: AuthorRepository) : GraphQLQueryResolver, GraphQLMutationResolver{
     @GetMapping("/authors")
     fun authors(): List<Author> = authorRepository.findAll()
 
